@@ -9,6 +9,7 @@
   - Commit messages must satisfy the Airlift commit policy: imperative mood, capitalized title, no trailing period, blank line after subject, wrapped to <= 72 characters.
   - PR description must adhere to `.github/pull_request_template.md`. Issue-closing references (e.g., `fixes #123`) MUST be on bulleted list items starting with `- ` or `* ` to ensure rich link preview rendering.
   - Plan-vs-diff containment: zero opportunistic cleanup or out-of-scope edits.
+  - Human Author Voice Mandate: All PR notes, descriptions, and commit explanations must sound like an experienced human engineer who contributes regularly. Zero AI tells: no em-dashes, no emojis, no verbose or dense phrasing, and no restating obvious engine mechanics that any reviewer already understands. Keep the cadence crisp, technical, and directly focused on the change.
 
 ## 2. Toolchain & Boundary Invariants
 - **Primary Languages & Extensions**: Java 25 (source files: `*.java`), TypeScript/TSX for Web UI (`core/trino-web-ui`).
