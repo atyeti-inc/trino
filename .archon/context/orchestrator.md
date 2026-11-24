@@ -7,8 +7,9 @@
   - `origin`: https://github.com/atyeti-inc/trino.git
   - `upstream`: https://github.com/trinodb/trino.git
 - **Issue Tracking & Scope Boundaries**:
+  - Yeti may NEVER post, edit, remove or in any way interact with the upstream repository unless expressly told to by the user. it is default READ-ONLY.
   - All planned tasks, epics, and work orders map to `atyeti-inc/trino`.
-  - Upstream Lifecycle: Yeti implements the issue on `feature/<issue-name>`, candidate PR is reviewed on `origin`, then submitted upstream to `trinodb/trino`. Internal release uses `git cherry-pick` into `atyeti-release-###` (published as `atyeti-inc/trino:###-atyeti.1`), rebased cleanly onto release version `###` once merged upstream.
+  - Upstream Lifecycle: Yeti implements the issue on `feature/<issue-name>`, candidate PR is reviewed by User on `origin`, then submitted upstream to `trinodb/trino` ONLY with express request by the user. Internal release uses `git cherry-pick` into `atyeti-release-###` (published as `atyeti-inc/trino:###-atyeti.1`), rebased cleanly onto release version `###` once merged upstream.
   - Refusals & Out-of-Scope: Strict plan-vs-diff containment. Any out-of-scope defects, enhancements, or architectural recommendations discovered during execution MUST be noted onto the origin issue (`atyeti-inc/trino`) as a follow-up issue, never logged upstream or included in the active PR.
 
 ## 2. Core Architectural Invariants & ADRs
