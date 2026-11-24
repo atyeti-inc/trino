@@ -33,15 +33,15 @@
   - Vector API Invariant: Vector API usage requires a scalar fallback, hardware feature detection, and benchmarks across AMD, ARM, and Intel.
 - **Linguistic / Stack Constraints**:
   - Java 25 (targetJdk 25) enforced via Airbase parent POM 427.
-  - Maven 3.9+ via `./mvnw` or Maven Daemon (`mvnd`).
+  - Maven 3.9+ via `./mvnw` (or `mvnd` when installed).
   - Formatting enforced via `io.airlift:airstyle-maven-plugin`.
   - Static analysis enforced via Error Prone compiler profile (`-P errorprone-compiler`) and Airbase checks.
 
 ## 3. Toolchains & Operational Commands
-- **Runtimes & Package Managers**: Java 25 (JVM) / Bun 1.x (Web UI) / Maven (`./mvnw` or `mvnd`)
+- **Runtimes & Package Managers**: Java 25 (JVM) / Bun 1.x (Web UI) / Maven Wrapper (`./mvnw`)
 - **Build / Codegen Prerequisite**:
-  - Fast build without tests: `mvnd clean install -nsu -DskipTests -Dmaven.javadoc.skip=true -Dair.check.skip-all=true`
-  - Recompile changed module: `mvnd package -DskipTests -Dair.check.skip-all=true -pl <module>`
-  - POM sorting: `mvnd sortpom:sort`
-  - License header formatting: `mvnd license:format`
+  - Fast build without tests: `./mvnw clean install -nsu -DskipTests -Dmaven.javadoc.skip=true -Dair.check.skip-all=true`
+  - Recompile changed module (with dependencies): `./mvnw package -DskipTests -Dair.check.skip-all=true -pl <module> -am`
+  - POM sorting: `./mvnw sortpom:sort`
+  - License header formatting: `./mvnw license:format`
   - Web UI frontend build: `bun run build` (in `core/trino-web-ui/src/main/resources/webapp`)
