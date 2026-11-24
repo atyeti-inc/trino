@@ -9,8 +9,13 @@
   - License Header: Every new source file must include the canonical Trino Apache-2.0 license header (`./mvnw license:format`).
   - Linear History: Linear commit history rebased onto latest upstream `master`. Merge commits are strictly prohibited (`action-merge: fail` in CI).
   - Atomic Bisectable Commits: Every individual commit on a PR branch must compile, pass tests, and pass airstyle/checkstyle independently (`check-commits-dispatcher` / `compile-commit`). Fixup or broken intermediate commits are prohibited.
-  - Airlift Commit Structure: Commit messages must use imperative mood, capitalized title, no trailing period, wrapped subject line, followed by a blank line and body wrapped to 72 characters explaining the motivation for the change.
-  - PR Description Contract: PR description must adhere to `.github/pull_request_template.md`. Issue-closing references (e.g., `fixes #123`) MUST be on bulleted list items starting with `- ` or `* ` to ensure rich link preview rendering.
+  - Airlift Commit Structure: Commit messages must strictly follow the Airlift CI specification:
+    - Subject Length: Target <= 50 characters; HARD MAXIMUM 60 characters (CI fails on > 60 chars).
+    - Subject Syntax: Must begin with a capital letter (or subsystem prefix like `Component: ...`) and must NEVER end with a period (`.`).
+    - Imperative Mood: Must use imperative verbs (`Add`, `Fix`, `Update`, `Remove`), never past-tense (`Added`, `Fixed`, `Updated`).
+    - Body Formatting: Blank line separating subject and body. All body lines strictly wrapped at <= 72 characters explaining the motivation and behavioral change.
+  - PR Description Contract: PR descriptions must adhere to `.github/pull_request_template.md`. Issue-closing references (e.g., `fixes #123`, `closes #123`) MUST be on bulleted list items starting with `- ` or `* ` (never embedded in paragraph prose) to ensure rich link preview rendering.
+  - File Trailing Newline Invariant: Every text file (Java, XML, YAML, Markdown, scripts) must terminate with a newline character (`\n`). Upstream CI scans all files via `git grep` and fails on missing trailing newlines.
   - Plan-vs-Diff Containment: Strict plan containment. Zero opportunistic cleanup, unrelated reformatting, or out-of-scope edits.
   - Human Author Voice Mandate: All PR notes, descriptions, and commit explanations must sound like an experienced human engineer who contributes regularly. Zero AI tells: no em-dashes, no emojis, no verbose or dense phrasing, and no restating obvious engine mechanics that any reviewer already understands. Keep the cadence crisp, technical, and directly focused on the change.
 

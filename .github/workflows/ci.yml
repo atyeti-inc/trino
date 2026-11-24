@@ -903,7 +903,7 @@ jobs:
       actions: write # to dispatch cancel-merge-queue-workflow on failure
       contents: read
     needs: path-filters
-    if: (github.event_name != 'pull_request' && github.event_name != 'merge_group') || needs.path-filters.outputs.non_docs == 'true'
+    if: github.repository == 'trinodb/trino' && ((github.event_name != 'pull_request' && github.event_name != 'merge_group') || needs.path-filters.outputs.non_docs == 'true')
     runs-on: ubuntu-latest
     outputs:
       matrix: ${{ steps.set-matrix.outputs.matrix }}
