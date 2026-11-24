@@ -2,13 +2,16 @@
 
 ## 1. Delivery & Git Invariants
 - **Remote Invariant**: All working mutations (`git checkout`, `git commit`, `git push`, candidate PR creation) target `origin` (`atyeti-inc/trino`) ONLY. Upstream (`trinodb/trino`) is read-only during development.
-- **PR Delivery Contract**:
-  - Must comply with upstream Trino contribution guidelines and require Contributor License Agreement (CLA) acceptance at https://github.com/trinodb/cla under Apache-2.0.
-  - Linear commit history rebased onto latest upstream `master`. No merge commits allowed (`action-merge: fail` in CI).
-  - Every individual commit on the PR branch must compile and pass airstyle/checkstyle independently (`check-commits-dispatcher` / `compile-commit`).
-  - Commit messages must satisfy the Airlift commit policy: imperative mood, capitalized title, no trailing period, blank line after subject, wrapped to <= 72 characters.
-  - PR description must adhere to `.github/pull_request_template.md`. Issue-closing references (e.g., `fixes #123`) MUST be on bulleted list items starting with `- ` or `* ` to ensure rich link preview rendering.
-  - Plan-vs-diff containment: zero opportunistic cleanup or out-of-scope edits.
+- **Author Identity Invariant**: All git commits must strictly use:
+  `Christopher Caldwell <Christopher.Caldwell@Atyeti.com>`
+- **Contributor License Agreement (CLA) Invariant**: All contributions are licensed under Apache-2.0. Submitting any PR upstream to `trinodb/trino` strictly requires that Christopher Caldwell has an executed Trino Contributor License Agreement on file with `cla@trino.io`. No upstream submission may occur without verified CLA registration.
+- **PR Delivery & Contributor Invariants**:
+  - License Header: Every new source file must include the canonical Trino Apache-2.0 license header (`./mvnw license:format`).
+  - Linear History: Linear commit history rebased onto latest upstream `master`. Merge commits are strictly prohibited (`action-merge: fail` in CI).
+  - Atomic Bisectable Commits: Every individual commit on a PR branch must compile, pass tests, and pass airstyle/checkstyle independently (`check-commits-dispatcher` / `compile-commit`). Fixup or broken intermediate commits are prohibited.
+  - Airlift Commit Structure: Commit messages must use imperative mood, capitalized title, no trailing period, wrapped subject line, followed by a blank line and body wrapped to 72 characters explaining the motivation for the change.
+  - PR Description Contract: PR description must adhere to `.github/pull_request_template.md`. Issue-closing references (e.g., `fixes #123`) MUST be on bulleted list items starting with `- ` or `* ` to ensure rich link preview rendering.
+  - Plan-vs-Diff Containment: Strict plan containment. Zero opportunistic cleanup, unrelated reformatting, or out-of-scope edits.
   - Human Author Voice Mandate: All PR notes, descriptions, and commit explanations must sound like an experienced human engineer who contributes regularly. Zero AI tells: no em-dashes, no emojis, no verbose or dense phrasing, and no restating obvious engine mechanics that any reviewer already understands. Keep the cadence crisp, technical, and directly focused on the change.
 
 ## 2. Toolchain & Boundary Invariants
